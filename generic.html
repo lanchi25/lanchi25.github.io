@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic Page - Massively by HTML5 UP</title>
+		<title>Projects Page - LanChi Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -41,26 +41,89 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h1>Sales Insight
+									<span class="date">August, 2024</span>
+									<h1>1. Sales Insight
 									</h1>
 									<p>A computer hardware business facing challenges to increase revenue in a dynamically changing market. As a data analyst, I tasked with providing a dashboard to the sales director that can give him real-time sales insights.</p>
 									
 								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
+								<div class="image main"><img src="images/pic_sale.jpg" alt="" /></div>
+					
+				
 								<h2>Project Details </h2>
 								<ul>
-									<li>Problem Statement: Atliq Hardwares - a computer hardware business facing challenges to increase revenue in a dynamically changing market. The sales director needs a dashdboard that can give him real-time sales insights that will provid him insights to increase revenue.</li>
-									<li>What I will do: As a data analyst I will provide this dashboard to the sales director. Provided sales insights that are not visible before for sales team for decision support & automate them to reduced manual time spent in data gathering.</li>
-									<li>Domain: Fast Moving Consumer Goods (FMCG).</li>
-									<li>Skill Acquired: Tech: SQL, Power BI. Core: Business understanding, analytical mindset.</li>
-									<li>Results:<br />
-										Dashboards uncovering sales order insights with latest data available<br />
-										Sales team able to take better decisions & prove 10% cost savings of total spend<br />
+									<li><b>Problem Statement</b>: Atliq Hardwares - a computer hardware business facing challenges to increase revenue in a dynamically changing market. The sales director needs a dashdboard that can give him real-time sales insights that will provid him insights to increase revenue.</li>
+									<li><b>What I will do </b>: As a data analyst I will provide this dashboard to the sales director. Provided sales insights that are not visible before for sales team for decision support & automate them to reduced manual time spent in data gathering.</li>
+									<li><b>Domain</b>: Fast Moving Consumer Goods (FMCG).</li>
+									<li><b>Skill Acquired</b>: Tech: SQL, Power BI. Core: Business understanding, analytical mindset.</li>
+									<li><b>Results</b>:<br />
+										Dashboards uncovering sales order insights with latest data available;<br />
+										Sales team able to take better decisions & prove 10% cost savings of total spend;<br />
 										Sales Analysts stop data gathering manually in order to save 20% of their business time and reinvest it value added activity.</li>
 								</ul>
+								
+								<h2>Analysis </h2>
+								<ul>
+									<b>Data Discovery</b>: <br />
+									<div class="image main"><img src="images/datadiscovery_sale.jpg" alt="" /></div>
+										The data was pulled from OLTP which is SQL Server, in my case they do all the tranformation which is also called ETL(extract, transform and load). After doing that they store the data in a data warehouse. By doing this transformation they are reformatting the data in a way that is best for performing analytical query. After that data analysts pull the data from data warehouse and they will build dashboard. For simplicity, I will have an SQL database and then directly pug Power BI to that and build dashboard.
+									<b>Data Analysis Using SQL </b>:<br/ >
+										<!-- Preformatted Code -->
+									<i>1. Show all customer records</i>
+									<pre><code>SELECT * FROM customers;
+
+</code></pre>
+									<i>2. Show total numer of customers</i>
+									<pre><code>SELECT COUNT(*) FROM customers;
+
+</code></pre>	
+									<i>3. Show total revenue in year 2020, January Month</i>
+									<pre><code>SELECT SUM(sales_amount) FROM transactions INNER JOIN date ON transactions.order_date = date.date WHERE date.year = 2020 and date.month_name = 'January' and transactions.currency = 'INR\r' or transactions.currency = 'USD\r';
+</code></pre>	
+										
+									<i>4. Show total revenue in year 2020 in Chennai</i>
+									<pre><code>SELECT SUM(*) FROM transactions INNER JOIN date ON transactions.order_date = date.date WHERE date.year = 2020 and transactions.market_code = 'Mark001' and transactions.currency = 'INR\r' or transactions.currency = 'USD\r';
+</code></pre>	
+
+
+									<b>Data cleaning & ETL </b>
+									<li>Use SQL to extract and load data to Power BI</li>
+									<li>Use Power query to clean and transform data</li>
+									<li>DAX, Measure:</br></li>
+									<i>1. Show all customer records</i>
+									<pre><code>= Table.AddColumn(#"Filtered Rows", "norm_amount", each if [currency] = "USD" or [currency] = "USD\r" then [sales_amount]*75 else [sales_amount], type any)
+</code></pre>
+									<b>Data model </b>
+									<div class="image main"><img src="images/model_sale.jpg" alt="" /></div>
+								</ul>
+								<h2>Dasboard </h2>
+								<p><a href="https://app.powerbi.com/view?r=eyJrIjoiNjVhY2Q3MGEtM2VjYS00MmMwLWEyZDQtMWYxMTM2NmQ0ZmM3IiwidCI6IjFkYjA0Njk1LWI4NzYtNGE1YS04MzQwLWU2MGI4ZTFiZWVhMiIsImMiOjEwfQ%3D%3D">Interactive Dashboard</a></p>
+								<div class="image main"><img src="images/dashboard_sale.jpg" alt="" /></div>
+
+
+								<b>Insights </b><br />
+								
+								<i><b>Recommendation </b></i>
+								<p>The business should:<br /></p>
+									<li>Run creative seasonal marketing campaigns (voucher, discount,..) with different products. Besides the best-selling items, we need to have marketing campaigns for the items that are not selling well.</li>
+									<li>Listen and record negative customer feedback about products and services... To find out the unresonable points (price, quality, delivery, errors) and fix them.</li>
+
+								<header class="major">
+									<span class="date">October, 2024</span>
+									<h1>1. Customer Segmentation <b/ >
+									- Shopping Mall Market - </h1>
+									
+									<p>In this data analysis project, I performed customer segmentation on a specific group of mall customers. I dentify the best possible cluster using the KMeans unsupervised machine learning algorithm to find the univariate, bivariate, and multivariate clusters. Once these clusters are identify, summary statistics can be performed on these to identify the best marketing group.</p>
+									
+								</header>
+								<div class="image main"><img src="images/pic_cus_seg.jpg" alt="" /></div>
+					
 				
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus. Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum.</p>
+								<h2>Problem statement </h2>
+								
+								
+				
+								
 							</section>
 
 	
